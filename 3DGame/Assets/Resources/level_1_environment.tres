@@ -1,0 +1,17 @@
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://bksrj7afc0jx"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sfsl4"]
+sky_top_color = Color(0.329412, 0.34902, 0.741176, 1)
+sky_horizon_color = Color(0.784314, 0.639216, 0.839216, 1)
+sky_curve = 0.0750001
+
+[sub_resource type="Sky" id="Sky_t5sbn"]
+sky_material = SubResource("ProceduralSkyMaterial_sfsl4")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_t5sbn")
+ambient_light_sky_contribution = 0.75
+ambient_light_energy = 16.0
+ssr_enabled = true
+ssao_enabled = true

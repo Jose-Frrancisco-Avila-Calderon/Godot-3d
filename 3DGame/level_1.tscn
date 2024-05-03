@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://dhfadsrypkgiu"]
+
+[ext_resource type="PackedScene" uid="uid://w8l3nk5ivvdh" path="res://steve.tscn" id="1_k57y8"]
+[ext_resource type="PackedScene" uid="uid://c2dcgmifhs6ee" path="res://block.tscn" id="1_pw8np"]
+[ext_resource type="Environment" uid="uid://bksrj7afc0jx" path="res://Assets/Resources/level_1_environment.tres" id="4_f8upe"]
+[ext_resource type="PackedScene" uid="uid://dx4g4pxwgqksr" path="res://coin.tscn" id="5_p5q6i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cfppk"]
+albedo_color = Color(0.048, 0.0624, 0.48, 1)
+roughness = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_qhx5o"]
+material = SubResource("StandardMaterial3D_cfppk")
+size = Vector3(10, 0.5, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vn20l"]
+size = Vector3(10, 0.5, 10)
+
+[node name="Level1" type="Node3D"]
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.29413, 0)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_qhx5o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+visible = false
+shape = SubResource("BoxShape3D_vn20l")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.601648, 0.798762, 0, -0.798762, 0.601648, 0, 7.94203, 4.5572)
+shadow_enabled = true
+
+[node name="Blocks" type="Node3D" parent="."]
+
+[node name="Block1" parent="Blocks" instance=ExtResource("1_pw8np")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.295, 0)
+
+[node name="Block2" parent="Blocks" instance=ExtResource("1_pw8np")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.27302, 5, 3)
+
+[node name="Block3" parent="Blocks" instance=ExtResource("1_pw8np")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -4)
+
+[node name="Block4" parent="Blocks" instance=ExtResource("1_pw8np")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 2.97637, 4, 1)
+
+[node name="Steve" parent="." instance=ExtResource("1_k57y8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, 0)
+
+[node name="Coin1" parent="." instance=ExtResource("5_p5q6i")]
+transform = Transform3D(1.1065, 0, 0, 0, 1.1065, 0, 0, 0, 1.1065, 1, 0.831892, 3.11377)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("4_f8upe")
